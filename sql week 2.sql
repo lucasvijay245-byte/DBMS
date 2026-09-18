@@ -1,0 +1,93 @@
+DROP DATABASE IF EXISTS BATA_SHOWROOM;
+CREATE DATABASE BATA_SHOWROOM;
+
+USE BATA_SHOWROOM;
+
+CREATE TABLE Category
+(
+    CategoryID INT PRIMARY KEY,
+    CategoryName VARCHAR(50)
+);
+
+INSERT INTO Category VALUES
+(1, 'MEN'),
+(2, 'WOMEN'),
+(3, 'KIDS'),
+(4, 'SPORTS'),
+(5, 'SANDALS'),
+(6, 'SLIPPERS');
+
+SELECT * FROM Category;
+
+
+CREATE TABLE Product
+(
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100),
+    BrandName VARCHAR(50),
+    Size VARCHAR(20),
+    Color VARCHAR(30),
+    Price DECIMAL(10,2),
+    Quantity INT,
+    CategoryID INT,
+
+    FOREIGN KEY (CategoryID)
+    REFERENCES Category(CategoryID)
+);
+
+
+
+INSERT INTO Product VALUES
+
+
+(101, 'FORMAL SHOES', 'BATA', '8', 'BLACK', 1499, 30, 1),
+(102, 'CASUAL SHOES', 'BATA', '9', 'BROWN', 1299, 25, 1),
+(103, 'LEATHER SHOES', 'BATA', '10', 'BLACK', 2499, 20, 1),
+(104, 'LOAFERS', 'BATA', '8', 'BROWN', 1799, 18, 1),
+(105, 'OFFICE SHOES', 'BATA', '9', 'BLACK', 1599, 25, 1),
+(106, 'LADIES SHOES', 'BATA', '6', 'BLACK', 1499, 20, 2),
+(107, 'WOMEN FLATS', 'BATA', '7', 'BLUE', 899, 30, 2),
+(108, 'WOMEN HEELS', 'BATA', '6', 'RED', 1599, 15, 2),
+(109, 'LADIES SANDALS', 'BATA', '7', 'PINK', 999, 25, 2),
+(110, 'WOMEN LOAFERS', 'BATA', '6', 'BROWN', 1399, 20, 2),
+(111, 'KIDS SHOES', 'BATA', '2', 'BLUE', 799, 20, 3),
+(112, 'KIDS SCHOOL SHOES', 'BATA', '3', 'BLACK', 899, 30, 3),
+(113, 'KIDS SANDALS', 'BATA', '4', 'RED', 699, 25, 3),
+(114, 'KIDS SPORTS SHOES', 'BATA', '3', 'WHITE', 999, 15, 3),
+(115, 'KIDS CASUAL SHOES', 'BATA', '2', 'GREEN', 899, 20, 3),
+(116, 'RUNNING SHOES', 'BATA', '9', 'GREY', 2299, 20, 4),
+(117, 'SPORT SHOES', 'BATA', '10', 'BLUE', 1999, 25, 4),
+(118, 'TRAINING SHOES', 'BATA', '8', 'BLACK', 1899, 18, 4),
+(119, 'WALKING SHOES', 'BATA', '9', 'WHITE', 1599, 25, 4),
+(120, 'GYM SHOES', 'BATA', '10', 'RED', 2099, 15, 4),
+(121, 'MEN SANDALS', 'BATA', '9', 'BROWN', 999, 30, 5),
+(122, 'CASUAL SANDALS', 'BATA', '8', 'BLACK', 899, 25, 5),
+(123, 'WOMEN SANDALS', 'BATA', '6', 'PINK', 799, 30, 5),
+(124, 'COMFORT SANDALS', 'BATA', '7', 'BLUE', 999, 20, 5),
+(125, 'SPORT SANDALS', 'BATA', '9', 'GREY', 1199, 18, 5),
+(126, 'MEN SLIPPERS', 'BATA', '9', 'BLACK', 499, 40, 6),
+(127, 'WOMEN SLIPPERS', 'BATA', '6', 'PINK', 599, 35, 6),
+(128, 'KIDS SLIPPERS', 'BATA', '3', 'BLUE', 399, 30, 6),
+(129, 'CASUAL SLIPPERS', 'BATA', '8', 'BROWN', 549, 25, 6),
+(130, 'COMFORT SLIPPERS', 'BATA', '9', 'GREY', 699, 20, 6);
+
+
+SELECT * FROM Product;
+
+
+UPDATE Product
+SET Price = 1599,
+    Quantity = 35
+WHERE ProductID = 101;
+
+
+SELECT * FROM Product
+WHERE ProductID = 101;
+
+
+DELETE FROM Product
+WHERE ProductID = 130;
+
+
+SELECT * FROM Product
+ORDER BY CategoryID;
